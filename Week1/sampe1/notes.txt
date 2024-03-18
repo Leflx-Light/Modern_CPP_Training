@@ -1,0 +1,31 @@
+Abstraction
+          - Not providing the implementation details so that 
+          a) It can be provided at a later point in the code hierarchy.
+          b) We can explain functionality without significant focus on implementation details.
+Inheritance
+          - Either you specialize the implementation for the specific sub-category
+                        OR
+          - you develop logic which can be generalized to many types.
+
+Polymorphism
+         - doing an action in more than one way
+Encapsulation
+
+Class & objects
+
+Composition
+
+Aggregation
+
+Association
+
+Go - programming language 
+there is no class keyword, object, method overloading, Inheritance.
+Go - supports OOPS.
+
+OOPS - 3 conditions to satisfy
+1.there should be way to create model or template or blueprint for your data.
+2.there should be way to represent state of data.
+3.you should be able to execute functions based on type of data. (type specific functions.)
+
+smalltalk - pure oops 

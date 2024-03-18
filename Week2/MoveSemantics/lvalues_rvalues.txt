@@ -1,0 +1,77 @@
+4 tokens
+
+
+int  // data type
+n1   // idetifier name given by the programmer
+=    //assignment operator
+10   //rvalue (integer literal)
+
+
+
+void Magic(std::vector<int> val)
+
+
+
+Scenario 1: Design the function to accept lvalue and rvalue both. Allow copy of lvalue and assignment of rvalue
+ 
+     
+          void Magic(std::vector<int> val)
+ 
+example:
+Magic(std::vector<int>{1,2,3}); // assigned to val                           replace with line no 11
+example:
+std::vector<int>v1{1,2,3,4,5};
+Magic(v1); // v1's 24 bytes (pointers) copy to val  // copy construction . We are constructing val by using v1. Deep copy
+
+
+scenario 2: lvalue to be accepted by reference .
+            No rvalues ( no temporary values, no ownership transfer, no copy)
+            NO copy
+
+         Example: 
+         void Magic(std::vector<int>& val);
+
+         Main(){
+            std::vector<int>v1{1,2,3,4,5};
+            Magic(v1); //by reference
+            Magic(std::vector<int>{1,2,3,4,5}); //compile time error.
+         }
+
+
+
+
+scenario 3: I only want a  single copy of data 
+            I only want rvalues so that user cannot create a duplicate copy of data in the caller function(Main)
+            Data should no longer be owned by Main.
+
+
+    Example: 
+         void Magic(std::vector<int>&& val);
+
+         Main(){
+            std::vector<int>v1{1,2,3,4,5};
+            Magic(std::vector<int>{1,2,3,4,5}); // okay!
+            Magic(v1); // by reference, compile time error
+            Magic(std::move(v1))// by rvalue reference -- releasing ownership 
+            // move function converts lvalue to rvalue.
+            
+         }
+
+
+scenario 4: I want to design a function where,
+            lvalue are accepted by reference, 
+            I also want rvalues by assignment
+     
+
+
+    Example: 
+         void Magic(const std::vector<int>& val);
+
+         Main(){
+            std::vector<int>v1{1,2,3,4,5};
+            Magic(std::vector<int>{1,2,3,4,5}); // okay!
+            Magic(v1); // by reference okay!!
+            Magic(std::move(v1)) okay!! // by rvalue reference -- releasing ownership 
+            // move function converts lvalue to rvalue.
+            
+         }

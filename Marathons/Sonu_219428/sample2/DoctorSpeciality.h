@@ -1,0 +1,11 @@
+#ifndef DOCTORSPECIALITY_H
+#define DOCTORSPECIALITY_H
+
+enum class DoctorSpeciality{
+      CARDIOLOGIST,
+      NEUROLOGIST,
+      DERMATOLOGIST,
+      GENERAL_PHYSICIAN
+};
+
+#endif // DOCTORSPECIALITY_H

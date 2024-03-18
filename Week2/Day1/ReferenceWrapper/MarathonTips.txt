@@ -1,0 +1,8 @@
+1. Proper Indentation, naming convention and appriorate use of comments.
+2. Code in multiple files separate header and implementation {.h and .cpp}.
+3. All functionalities working with proper output, proper corner case check.
+4. Main Part 
+less relevant:
+1. use of smart pointers.
+2. custom exceptions!
+3

@@ -1,0 +1,15 @@
+if you take pointer of class B in class A 
+we say that class A is composed with class B as a member .
+
+
+if you take reference of class B in class A 
+we say that class A is aggregated with class B as a member .
+
+
+
+
+
+Composition : if class A object is destroyed, attached class B object is also supposed to be destroyed.
+
+Aggregation : if class A object is destroyed, attached class B object should not get destroyed.
+

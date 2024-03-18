@@ -1,0 +1,17 @@
+function wrapper.
+lambda functions pass lambda functions.
+reference wrapper -- > aggregation based.
+bind : bind functionalies 
+std::ref 
+
+
+
+Objective:
+     Make 3 lambda functions and 1 adaptor functions in the functionalities section.
+        - Each lambda takes one vector of integer and returns void
+    Lambda Functions are:
+        1.) Lambda function to find first element of the vector.
+        2.) Lambda function to find last element of the vector.
+        3.) Lambda function to return the size of the vector.
+Adaptor must accept ONLY ONE OF THE ABOVE LAMBDAS at a time along with a container of integers
+

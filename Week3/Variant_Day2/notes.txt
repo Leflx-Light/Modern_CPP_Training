@@ -1,0 +1,11 @@
+Variant : replacement of inheritance and if there is number of  fixed child classes, benefits of upcasting.
+
+
+object creation has nothing to do with variant.
+
+need of variant :
+virtual runtime overhead.
+due to virtual, program runs slow.
+
+
+Algebraic data type (ADT):

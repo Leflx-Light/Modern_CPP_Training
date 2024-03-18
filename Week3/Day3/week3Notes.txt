@@ -1,0 +1,20 @@
+1. std::thread
+    - one thread
+    - container of threads
+    - std::mutex for race condition
+    - std::lock_guard to manage mutex based on scope
+2. if initializer
+3. std::optional (neither an exption nor a proper output.)
+4. structured Binding
+5. std::variants
+    -functional polymorphism
+    - std::visit (for common features)
+    - std::holds_alternative (for unCommon features)
+6. std::condition_variable
+    - unique_lock, notify mechanism
+7. std::async
+   - with future_input
+   - without future_input
+8. fold expressions
+9. Variadic templates.
+

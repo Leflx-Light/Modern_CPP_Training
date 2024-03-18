@@ -1,0 +1,15 @@
+no codewithharry
+no codewithjenny
+no shraddadidi
+
+
+---
+1. Mike Shah C++ playlist
+2. cppcon -- cpp annual conference (back to basics for us)
+3. www.nullptr.com ---- refere articles
+4. www.cppreferene.com 
+5. www.cplusplus.com
+6. Books - cpp basics polish - c++ the complete reference  --- 5th latest 2012 
+7. C++ 11 and C++ 14 Effective Modern Cpp - Scott Meyer
+8. Threading and Multithreading -- Concurrency in action Book 
+9. C++ Template the Complete guide. (Modern CPP ) - Nicola 

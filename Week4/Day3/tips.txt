@@ -1,0 +1,16 @@
+1. take care of optional 
+2. singleton class
+3. 
+
+
+
+int factorial(std::future<int>& ft){
+    int n = ft.get();
+
+
+
+    return ans; // calculated result;
+}
+
+
+std::future<int>result = std::async(&factorial, std::ref(ft));

@@ -1,0 +1,15 @@
+Command Line Learning (basic usage)
+Git Version Control 
+Makefile  and cmake
+Great understanding of OOP!
+
+- Effective Modern CPP! Book at any lost complete it
+- C++ The Complete Reference!
+
+
+ 
+
+Normal exceptions not work on threads/async 
+
+
+use future exception on async threading.

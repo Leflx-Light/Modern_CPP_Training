@@ -1,0 +1,168 @@
+#encapsulation: 
+              Hide the internal representation of the object from any party/entity/line of code outside the class.You can use data binding this by simply providing member functions as layer between data and outside world.
+
+
+
+#data binding:
+              The concept of relating/binding with member functions with data members.If you are putting a function inside class, it must use alteast one data member of that class.
+
+
+#Abstraction: Hiding the implementation detail of a behaviour(functionality) SO THAT 
+   a.) It allows programmers to reimplement a functionality in a different way down the class hierarchy by overriding in child class.
+
+   b.) By using Abstraction, we can talk in "ABSTRACT" terms while explaining behaviour
+
+   
+
+
+
+   Create a banking system where i can record customer details, account details, card details and cheque details , account may have sub categories
+   Expected operation are : ability to create new account.
+
+   find details of an account based on ID, calculate min, max, total or print details of cheque based on cheque number, etc.
+
+
+
+
+1. Read the problem statement completely twice at least before doing anything.
+2. compile program only when it is fully completed.
+3. Always work on individual functions at a time only.
+   Breakdown entire solution into small small sections.
+4. Always draw a diagram.
+5. Spend more time in designing the solution for each functionality rather than implementing it.
+
+
+
+Virtual :
+
+Scenario 1: I want to model some data. Bind members with accessible perform basic operations.
+
+    -Create a simple class.
+    -Bind data members with member functions. Keep all data private.
+
+
+Scenario 2: I want to create types and subtypes so that I can generalize operations or implement specific solutions for specific sub categories.
+    -Create a parent class and appriorate child classes. 
+    Then,Ask the following questions.
+     a.) Are all methods implemented in all classes?
+        - if yes, no need for  pure virtual.
+     b.)Are we going to create objects of multiple classes and store them together in the same container?
+       - if yes, we need to use upcasting.
+       - Base class methods must be marked as virutal.
+       - Destructor must be marked as virtual.
+    c.) Do we need to make the base class abstract/ Do we need to prevent instantiation (object creation for base class?)
+       - Make sure at least 1 method in the parent is marked as pure virtual.
+    d.)I'm not very sure if method will be overriden. Maybe in future Not sure currently.
+       - Mark all such method as Virtual.
+
+
+
+
+class A {
+   
+    ...
+    ...
+    static // hidden member  *vptr;
+    public:
+    void Test(){
+        std::cout<<"A Test\n";
+    }
+    virtual void Display(){
+        std::cout<<"A display\n";
+    }
+
+};
+
+
+class B:public class A{
+    ...
+    ...
+    public:
+
+     public:
+    void Test(){
+        std::cout<<"B Test\n";
+    }
+    void Display() override{
+        std::cout<<"B display\n";
+    }
+
+};
+
+
+
+Rule 1: for a class that contains atleast one virtual method
+A virtual table is created in memory. This table has addresses for the virtual methods functions.
+
+Rule 2: If a class inherits from a parent class that also contains a vtable, the child will also implement its own vtable.
+
+A *ptr = new B();
+ptr->Display();
+step-1 verify where is Display()
+   -go to class whose type is ptr's type.
+   -go to A class. Verify whether this function.
+   - is at least declared in class A.
+step-2 Verify is the method is non-virtual. If yes, call the function. 
+For the non-virtual functios. LHS is matters.
+step-3 If function is virtual , proceed to step 3
+   - Now find the type of RHS ( object type). Find the vtable for object 
+     and call function based on ENTRY IN VTABLE
+
+
+
+
+class A vtable:
+[A::Display():: 0x10045H]
+0x777H
+|
+|
+[vptr]
+
+
+class B vtable:
+[B::Display():: 0x20045H]
+0x777H
+|
+|
+[vptr]
+
+
+
+
+
+Assumption: Pointer is of Parent type;
+-----Scenario 1: 
+I want to call fn, fn exists in Parent, fn also exists in child.But fn is non-virtual
+  you can use ptr->fn() // this will call parent call fn.
+  YOU CAN USE DYNAMIC CAST TO CONVERT PTR INTO CHILD TYPE AND THEN CALL CALL::FN
+
+-----Scenario 2: 
+    I want to call fn, fn exists in Parent, fn does not existsin child.But fn is non-virtual
+
+    you can use ptr->fn()   // A::fn()
+    YOU SHOULD NOT USE DYNAMIC BECAUSE FN DOES NOT EXIST IN THE CHILD. SO WHAT'S THE BLOODY POINT!!
+
+----Scenario 3:
+I want to call fn,  fn  exists in child.fn does not exist in the parent . But fn is non-virtual
+
+PARENT POINTER IS PRACTICALLY USELESS. YOU HAVE TO DO DYNAMIC CAST.
+
+----Scenario 4:
+I want to call fn, fn exists in the parent. fn also exists in the child. But fn is MARKED virtual.
+ 
+compiler will call the most derived version of fn FROM THE INHERITANCE hierarchy
+
+      Parent
+       /   \
+      /     \
+  child1    child 2
+
+Parent *P = new Child2();
+
+
+
+
+
+DARK
+LOKI
+The imitation game

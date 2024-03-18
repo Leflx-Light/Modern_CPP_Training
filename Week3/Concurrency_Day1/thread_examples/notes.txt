@@ -1,0 +1,136 @@
+Processor : 
+           It is a hardware device based on SILICON (Atleast till today)  which executed instructions given.
+           eg: Intel i5 12 gen 1230U
+
+
+Core : 
+      It is a section of the processor which is capable of executing ONE WHOLE PROCESS.
+
+      [   c1  |   c2  ]
+      [   c3  |   c4  ]
+
+      More number of cores, more processes can execute isolately.
+
+      All cores are not equally powerful.
+
+
+      Till date , we wrote : 
+      Single thread, single process, synchronous programs!!
+
+
+
+      Thread is a mini program. Separate from main program.
+
+
+
+1.) What are we doing?
+   - We are trying to do more work in our work per second.
+     OR  
+   - I want more efficiency in my program for which I want to my hardware better.
+
+2.) How?
+   - By using the OS for support. We are requesting OS to run independent sections of my program parallely if possible or concurrenty if nothing else works out.
+
+3) Syntax wise what to do?
+  - Each of your independent functions can be treated "logical threads". They ncan be scheduled by OS if you can create a thread objects and attach it to one callable with right parameters.
+
+  -Also remember to wait for threads to finish
+     OR    
+  Detach from spawned threads.
+
+
+4) Why did you join?
+   - Because main thread cannot finish before other threads as spawned threads need to report back to main via signals.
+   If main is already finished, then thread has to become daemon thread (a  thread running in the background).
+
+5) What is std::thread?
+  - It is a class which  is a wrapper around a native platform specific OS-level thread.
+
+6) Can be copy threads?
+   - No, Because once a mini program started, copying it would mean duplicating and doing the same thing again!
+
+7) Can we make the container of threads?
+   - YES, since thread instances are objects, you can do this.
+
+
+
+8) What is race condition?
+
+  2 or more threads are fighting to perform a write operation on a shared memory ( cout buffer)
+
+
+9) What is critical section?
+   - any part of the program where race condtion can happen to cause data integrity issue, incoherant output, or worse!
+  
+10) How to avoid race condtion?
+
+  - Take actions to synchronize threads especially for critical sections.
+
+
+11) Syntactically, how to do this?
+
+  - Choose between the plethora ( too many) of available choices for synchronization primitived.
+
+ - mutex: binary semaphore which needs to locked/unlocked manually.
+
+ - lock_guard: which is scope based lock that uses RAII
+ - unique_lock: It can be locked/unlocked manually as well as with RAII rules.
+
+ - recursive locks: if you want to use recursion and thread [what the hell are you doing this for?]
+
+ -condition variable: To implement synchronization based on Producer/Consumer model.
+
+ 12) How will I knowh which one to use?
+   - Common Sense.
+
+
+13) How will I learn all this ?
+  - That's where Harshit comes into the picture.
+  - Also, CPPCON and concurrency in Action books are great resources.
+
+14) All this sounds like OS level stuff. Why am I learning it?
+  - Because you chose to make your life miserable.
+  - Because all developers need to use hardware efficiently
+
+15) What is this synchronous and asynchronous stuff?
+  - If you start command/instruction N only aftercommand/instruction N-1 is fully completed, execution is synchronous 
+
+   else 
+
+   asynchronous
+
+16.) Is aysnc the same async I have learnt in javascript/and/or other language?
+   - Yes, Of Course!
+
+
+17) What if I don't understand all this before the marathon?
+  - Well.....................
+     - I heard TCS is still hiring!
+
+
+----------------------Next----------------
+
+
+//problem code: 
+try{
+    mt.lock();
+    amount -=10;
+    PerformanceActionAfterModification();
+ 
+}catch(std::runtime_error& ex){
+    std::cout<<ex.what()<<"\n";
+    RecordLogsOfException();
+}finally(){
+    mt.unlock();
+}
+
+//solution code:
+try{
+   std::lock_guard<std::mutex> lk(mt); // 
+    amount -=10;
+    PerformanceActionAfterModification();
+ 
+}catch(std::runtime_error& ex){
+    std::cout<<ex.what()<<"\n";
+    RecordLogsOfException();
+}

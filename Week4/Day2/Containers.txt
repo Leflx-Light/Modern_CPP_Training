@@ -1,0 +1,114 @@
+seguay: A smooth transiton
+
+
+------------------------------------ARRAY------------------------------------------
+
+
+option 1 : store objects in fixed sized container with contiguous storage.
+      Benefits:  1) Random Access
+                 2) easy to find next and previous 
+                 3) no tension of resize or change in length.
+
+Answer: Array data structure.
+CPP implementation :: std::array<T, N, ////////>
+
+Note: 
+    1) An Array of size N when declared, immediately reserves space for N items,
+       This means, N default constructions will happen at the time of declaration.
+
+------------------------------------VECTOR-------------------------------------------------
+
+option 2: store objects in dynamically resizable container which can be used like an array with reservation for elements or by pushing when required and resizing if necessary
+
+Answer : Vector arrangement
+CPP implementation : std::vector<T,/////////>
+
+
+Benefits: 
+    1.) You can resize the container during the runtime of the programmer.
+    2.) You can access elements via index randomly.
+
+
+Note: 
+   1.) If you add elements beyound capacity, vector has to re-adjust.
+   Sometimes, vector cannot expand adjacent to its boundary. In such cases, a complete shift of data happens.
+
+
+---------------------------------------------------------------------------------------------  
+option 3: I would like to store data ANYWHERE IN RAM as long as I can fetch it when I want it.
+Data items should be "linked" to each other.
+
+Answer: linked list
+CPP Implementation: std::forward_list:(singly linked list)
+                    std::list(doubly linked list)
+
+
+--------------------------------HASH TABLE--------------------------------------------
+Search data so fast as soon as possible
+
+[   101 | "Rohan"   |    87000.0f   |   "Developer"  ]
+[   102 | "Ajay"    |     7000.0f   |   "Tester"     ]
+
+Tag                       Data
+103 : [   103 | "Harshit" |    97000.0f   |   "Trainer"    ]
+Key                       Value
+
+--------------------------------
+9 Items at MAX , I want to store.
+--------------------------------
+
+ fix a mathematical of finding where to put the data [which row?]
+ we can use the same mathematical formula to determine where my data is when I need to read it later!!
+
+ formula [HASH FUNCTION] Modulus 9
+ a.) 101%9 = 2 //row 2  --> result of modulus 9 is hash value/ hash
+ b.) 102%9 = 3 //row 3
+ c.) 103%9 = 4 //row 4
+
+
+[] [                     ]            row[0]
+[101] [  101 | "Rohan"   |    87000.0f   |   "Developer"     ]            row[1]
+[] [   102 | "Ajay"    |     7000.0f   |   "Tester"     ]                               row[2]
+[] [                     ]            row[3]
+[] [                     ]            row[4]
+[] [                     ]            row[5]
+[] [                     ]            row[6]
+[] [                     ]            row[7]
+[] [                     ]            row[8]
+
+
+for row in hash_table
+   if row not empty: 
+       print(val from row)
+
+
+
+// find the salary of the employee whose employee ID is 102
+Answer : 102%9 = 3 read in row 
+
+I want to store infinite data in future.
+
+
+
+
+
+
+------------------------After Break---------------------------
+
+
+[11 | 12 | 10 | 20 | 30 | 50 ]
+
+12 mod 7 = 5
+10 mod 7 = 3
+20 mod 7 = 6
+30 mod 7 = 2
+40 mod 7 = 5
+
+
+
+locate 40 !!!
+40 mod 7 =  5  
+
+Time Complexity : O(1) : 
+Average Case : Amortized O(1)
+Worst Case : O(1)

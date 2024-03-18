@@ -1,0 +1,7 @@
+1. <Identifier> not declared in scope.
+   - Function name being used does not appear in declared symbols.
+   - variable declared does not appear in available names.
+
+
+2. # undefined reference to <function-name>
+   - The function definition/implementation/body doesn't exist.
